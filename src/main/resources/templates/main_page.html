@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products App</title>
+    <script th:src="@{/js/functions.js}" defer></script>
+</head>
+<body>
+
+<table id="table" border="1">
+    <thead>
+    <th></th>
+    <th th:each="date : ${dates}">
+        <input class="date" type="text" th:value="${date}"/>
+    </th>
+    </thead>
+    <tbody th:each="trade : ${trades}">
+    <tr>
+        <td hidden="hidden">
+            <input th:value="${trade.product.id}">
+        </td>
+        <th>
+            <input class="product" type="text" th:value="${trade.product.name}"/>
+        </th>
+        <td th:each="amount : ${trade.amounts}">
+            <input class="amount" th:value="${amount}">
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<input id="save_btn" type="submit" value="Сохранить"/>
+
+</body>
+</html>
